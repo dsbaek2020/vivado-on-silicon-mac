@@ -11,7 +11,7 @@
 | -------------- | --------------------------------------------------------------------------------------------- |
 | 💻 Mac         | MacBook Pro M4 Max 36GB (Apple Silicon)                                                       |
 | 🐳 Docker      | `linux/amd64` platform with Rosetta2 emulation                                                |
-| 🚰 Vivado 설치파일 | `FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`<br>＊ 야 300GB 오프라인 설치 파일 (AMD 공식 웹사이트에서 다운로드 필요) |
+| 🚰 Vivado 설치파일 | `FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`<br>＊ 약 110GB 오프라인 설치 파일 (AMD 공식 웹사이트에서 다운로드 필요) |
 | 💮 가상 모니터      | Dummy HDMI + VNC 설정 (headless 대응)                                                             |
 | 🔐 원격 데스크톱     | macOS 기본 `Screen Sharing (VNC)` 앱                                                             |
 | 👚 쉘 환경        | `zsh`, 컨테이너 지정 Dockerfile 및 Shell Scripts                                                     |
