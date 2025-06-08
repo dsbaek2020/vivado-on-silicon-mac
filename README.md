@@ -73,13 +73,17 @@ Vivado 사용 중 다음과 같은 증상이 나타날 수 있습니다:
 
 ## 🧠 소개
 원 제작자 Michael Mösch
-ichi4096(https://github.com/ichi4096/vivado-on-silicon-mac) 감사드립니다.  
-도움을 받은 [@vantaa89 버프러드](https://velog.io/@vantaa89/Apple-Silicon에서-Vivado-돌리기)에게 감사를 드림니다.
+(ichi4096) (https://github.com/ichi4096/vivado-on-silicon-mac) 감사드립니다.  
+그리고 한국에서 도움을 받은 [@vantaa89 버프러드](https://velog.io/@vantaa89/Apple-Silicon에서-Vivado-돌리기)에게 감사를 드림니다.
 웹사이트 구조 문제 때문에 오프라인 설치 형식으로 확장해 공유할 수 있게 되었습니다. 🙏
 
 ---
 
 > **"즐거운 RTL/임베디드 설계, 이제는 macOS에서도 😄"**
+
+
+
+Michael Mösch의 글은 지적이고 열정이 담겨 있어 참 좋습니다. 그의 분석력과 연구가 인상적이며, 노력에 감사드립니다.
 
 
 # vivado-on-silicon-mac
