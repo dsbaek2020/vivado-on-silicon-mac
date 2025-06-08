@@ -56,8 +56,8 @@ vivado-on-silicon-mac/
 
 Vivado 사용 중 다음과 같은 증상이 나타날 수 있습니다:
 
-* **합성(Synthesis)** 또는 **임플리먼티언(Implementation)** 동안 트입기
-* **비트스트림(Bitstream)** 생성 중 중단
+* **합성(Synthesis)** 또는 **임플리먼티언(Implementation)** 동안 중단 IDE 꺼짐
+* **비트스트림(Bitstream)** 생성 중 중단 IDE 꺼짐
 
 🔧 이러한 경우에는 먼저 `RTL Analysis` 기능을 이용하여 Design을 열어주는 것이 안정성을 향상시키는데 도움이 되었습니다.
 
