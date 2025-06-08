@@ -66,7 +66,7 @@ Vivado 사용 중 다음과 같은 증상이 나타날 수 있습니다:
 ## 📁 설치 용량 및 실행 성능
 
 * 설치 완료 후 `/home/user/Xilinx/` 폴더 기준 대략 **50GB**
-* `Vivado + Vitis IDE` 포함 (Vitis IDE는 Docker 환경의 그래픽 UI 엔진 부족으로 GUI 실행 비필)
+* `Vivado + Vitis IDE` 포함 (Vitis IDE는 Docker 환경의 그래픽 UI 엔진 부재(추정)으로 GUI 실행 안됨)
 * **USB 기본 장비와 연결** 및 **비트스트림 다운로드 가능** 🎉
 
 ---
