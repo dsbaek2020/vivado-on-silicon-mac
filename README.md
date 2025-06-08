@@ -22,7 +22,7 @@
 
 ### 1. Vivado 설치 파일 준비
 
-* AMD 공식 홈페이지에서 오프라인 설치 파일(`FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`) 다운로드 후 압쓰 해제
+* AMD 공식 홈페이지에서 오프라인 설치 파일(`FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`) 다운로드 후 압축 해제
 * 루트 디렉터리 `vivado-on-silicon-mac/` 아래에 위치시키며 사용
 
 ### 2. 디렉터리 구성 예시
@@ -65,7 +65,7 @@ Vivado 사용 중 다음과 같은 증상이 나타날 수 있습니다:
 
 ## 📁 설치 용량 및 실행 성능
 
-* 설치 완료 후 `/home/user/Xilinx/` 폴더 기준 야 **50GB**
+* 설치 완료 후 `/home/user/Xilinx/` 폴더 기준 대략 **50GB**
 * `Vivado + Vitis IDE` 포함 (Vitis IDE는 Docker 환경의 그래픽 UI 엔진 부족으로 GUI 실행 비필)
 * **USB 기본 장비와 연결** 및 **비트스트림 다운로드 가능** 🎉
 
