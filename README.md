@@ -1,47 +1,85 @@
+# Vivado on Apple Silicon (M4 Max) with Docker + Rosetta2 (Offline Installation)
 
+> 🚀 Run **Vivado 2024.1** natively on **Apple Silicon** using **Docker**, **Rosetta2**, and a fully offline installer
+> ⚙️ Real SoC RTL/FPGA workflow – now feasible on macOS!
 
-📦 사용한 환경 요약
-💻 Mac MacBook Pro M4 Max 36GB (Apple Silicon)
-🐳 Docker linux/amd64 플랫폼 지정으로 Rosetta2와 함께 사용
-🛠 Vivado 설치파일 FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023 (오프라인 설치 파일: AMD 에서 다운로드 하셔요. 오프라인 300기가 정도 됩니다. )
-🖥 가상 모니터 dummy HDMI + VNC 설정 (headless 설치 대응)
-🔐 원격 데스크톱 macOS 기본 Screen Sharing (VNC) 앱 사용
-🐚 터미널 쉘 zsh, Dockerfile 및 shell script 커스터마이징 사용
+---
 
-⚙️ 설치 및 실행 흐름 요약
-Vivado 오프라인 설치 파일을 압축 풀어서 vivado-on-silicon-mac/ 루트에 위치
-GitHub에 커스터마이징된 스크립트로 구성된 디렉토리 구성:
+## 📦 Environment Summary
+
+| 항목             | 사용 구성                                                                                         |
+| -------------- | --------------------------------------------------------------------------------------------- |
+| 💻 Mac         | MacBook Pro M4 Max 36GB (Apple Silicon)                                                       |
+| 🐳 Docker      | `linux/amd64` platform with Rosetta2 emulation                                                |
+| 🚰 Vivado 설치파일 | `FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`<br>＊ 야 300GB 오프라인 설치 파일 (AMD 공식 웹사이트에서 다운로드 필요) |
+| 💮 가상 모니터      | Dummy HDMI + VNC 설정 (headless 대응)                                                             |
+| 🔐 원격 데스크톱     | macOS 기본 `Screen Sharing (VNC)` 앱                                                             |
+| 👚 쉘 환경        | `zsh`, 컨테이너 지정 Dockerfile 및 Shell Scripts                                                     |
+
+---
+
+## ⚙️ 설치 및 실행 향방 요약
+
+### 1. Vivado 설치 파일 준비
+
+* AMD 공식 홈페이지에서 오프라인 설치 파일(`FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023`) 다운로드 후 압쓰 해제
+* 루트 디렉터리 `vivado-on-silicon-mac/` 아래에 위치시키며 사용
+
+### 2. 디렉터리 구성 예시
+
+```
 vivado-on-silicon-mac/
 ├── scripts/
-│ ├── setup.sh and install_vivado.sh
-│ ├── start_container.sh
-│ └── install_configs/202410.txt
-├── FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023/ ← xsetup 포함
+│   ├── setup.sh
+│   ├── install_vivado.sh
+│   ├── start_container.sh
+│   └── install_configs/202410.txt
+├── FPGAs_AdaptiveSoCs_Unified_2024.1_0522_2023/  ← xsetup 포함
+```
 
-설치 명령어 실행:
-./scripts/setup.sh (약 10분 소요)
-설치 후 Vivado 실행:
-./scripts/start_container.sh (약 40초 소요)
+### 3. 설치 및 실행 명령어
 
-자동으로 Docker가 뜨고 VNC를 통해 Vivado GUI에 접속됨 (vnc://user:비밀번호@localhost:5901)
+```bash
+# 오프라인 설치 (야 10분)
+./scripts/setup.sh
 
-💡 팁: Vivado가 중간에 멈출 때
-합성(Synthesis) 또는 임플리멘테이션(Implementation) 중 비정상 종료되거나 비트스트림 생성 중 튕기는 경우가 간혹 발생했는데요,
-이럴 땐 먼저 RTL Analysis 를 수행하고 Design을 열어본 후 실행하면 안정성이 향상되었습니다.
-🎉 마무리
-덕분에 Qt 나 Xcode로 앱 개발을 하면서 동시에 Apple Silicon에서 SoC RTL 설계와 FPGA 흐름을 자유롭게 실험할 수 있게 되어 정말 즐겁습니다. (Xilinx 폴더에 비바도 포함 Vitis 도 있네요. Vitis IDE 는 실행은 안됨.. 도커리눅스에 그래픽 UI 엔진이 없어서 그런것 같습니다. 총 프로그램이 설치된 Xilinx 폴더는 50기가 정도 입니다.)
+# 설치 후 Vivado 실행 (야 40초)
+./scripts/start_container.sh
+```
 
-중규모 프로젝트를 돌려도 맥북 이라서 그런지 나름 빠르고 발열도 적고 팬소음도 거의 들리지 않습니다.
-Vivado의 강력한 기능을 Mac에서도 누리고 싶은 분들에게 오프라인 설치 + Docker 조합은 충분히 도전해볼 가치가 있습니다! 참 그리고 USB로 타겟을 연결하고 비트스트림 다운로드도 됩니다. !!!
+> 설치 완료 후 자동으로 Docker 커테이너가 실행되고, VNC 연결 창이 발생합니다:
+> `vnc://user:비밀번호@localhost:5901` 로 접속 가능
 
-"즐거운 RTL/임베디드 설계 😄"
-감사합니다. 🙏
+---
 
+## 💡 안정성 핀
 
+Vivado 사용 중 다음과 같은 증상이 나타날 수 있습니다:
 
+* **합성(Synthesis)** 또는 **임플리먼티언(Implementation)** 동안 트입기
+* **비트스트림(Bitstream)** 생성 중 중단
 
+🔧 이러한 경우에는 먼저 `RTL Analysis` 기능을 이용하여 Design을 열어주는 것이 안정성을 향상시키는데 도움이 되었습니다.
 
+---
 
+## 📁 설치 용량 및 실행 성능
+
+* 설치 완료 후 `/home/user/Xilinx/` 폴더 기준 야 **50GB**
+* `Vivado + Vitis IDE` 포함 (Vitis IDE는 Docker 환경의 그래픽 UI 엔진 부족으로 GUI 실행 비필)
+* **USB 기본 장비와 연결** 및 **비트스트림 다운로드 가능** 🎉
+
+---
+
+## 🧠 소개
+원 제작자 Michael Mösch
+ichi4096(https://github.com/ichi4096/vivado-on-silicon-mac) 감사드립니다.  
+도움을 받은 [@vantaa89 버프러드](https://velog.io/@vantaa89/Apple-Silicon에서-Vivado-돌리기)에게 감사를 드림니다.
+웹사이트 구조 문제 때문에 오프라인 설치 형식으로 확장해 공유할 수 있게 되었습니다. 🙏
+
+---
+
+> **"즐거운 RTL/임베디드 설계, 이제는 macOS에서도 😄"**
 
 
 # vivado-on-silicon-mac
